@@ -1,16 +1,23 @@
-export const App = () => {
+import React, { Component } from "react";
+import Searchbar from './Searchbar';
+
+
+export class App extends Component {
+  state ={
+    formValue : '',
+  }
+  formSubmitHendler =data=> {
+    this.setState( ({
+      formValue: data.value,
+    }))
+  }
+render () {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+    <Searchbar onSubmit={this.formSubmitHendler} />
     </div>
   );
+}
+
+ 
 };
