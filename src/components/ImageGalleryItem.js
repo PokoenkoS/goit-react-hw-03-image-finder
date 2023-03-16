@@ -28,11 +28,11 @@ componentDidUpdate(prevProps, prevState) {
       this.setState({ status: Status.PENDING });
    
     }
-    // imagesApi
-    //     .fetchImages(nextValue)
-    //     .then(r =>this.setState({image:r, status: Status.RESOLVED}))
-    //     .catch(error => this.setState({ error, status: Status.REJECTED }))
-    //     console.log(this.setState);
+    imagesApi
+        .fetchImages(nextValue)
+        .then(r =>this.setState({image:r, status: Status.RESOLVED}))
+        .catch(error => this.setState({ error, status: Status.REJECTED }))
+        console.log(this.setState);
 }
 render() {
     const { image, error, status } = this.state;
