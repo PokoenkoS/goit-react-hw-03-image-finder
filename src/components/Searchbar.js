@@ -12,6 +12,7 @@ class Searchbar extends Component{
 handleChange = e => {
    
     this.setState({value: e.currentTarget.value})
+   
 }
 
 handleSubmit = e => {
@@ -21,12 +22,12 @@ handleSubmit = e => {
     }
     this.props.onSubmit(this.state);
     this.setState({value: ""})
-    console.log(this.state.value);
+  
 }
 
     render(){
         return (
-            <header className="Searchbar">
+<header className="Searchbar">
   <form onSubmit={this.handleSubmit} className="Form">
     <button type="submit" className="Button">
       <span className="button-label">Search</span>
