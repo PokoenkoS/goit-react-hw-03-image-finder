@@ -22,10 +22,10 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-const {formValue, page, image} = this.state;
+const {formValue, page} = this.state;
 if(prevState.formValue!==formValue || prevState.page!== page){
   imagesApi
-  .fetchImages(formValue)
+  .fetchImages(formValue,page)
   .then(r=>this.setState({image:r.hits, status: Status.RESOLVED}))
   .catch(error => this.setState({ error }))
 }
