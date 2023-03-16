@@ -14,27 +14,22 @@ const Status = {
 export class App extends Component {
   state ={
     formValue : '',
-    image: null,
+    image: [],
     error: null,
     status: Status.IDLE,
+    page:1,
     
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const prevValue = prevProps.formValue;
-    const nextValue = this.props.formValue;
-   
-    console.log(`Попередній`,prevValue);
-    console.log(`Наступний`,nextValue);
-    if (prevValue !== nextValue ) {
-      this.setState({ status: Status.PENDING });
-   console.log(`ok`);
-    }
-    imagesApi
-        .fetchImages(nextValue)
-        .then(r=>this.setState({image: r.hits}))
-        .catch(error => this.setState({ error }))
-     
+const {formValue, page, image} = this.state;
+if(prevState.formValue!==formValue || prevState.page!== page){
+  imagesApi
+  .fetchImages(formValue)
+  .then(r=>this.setState({image:r.hits, status: Status.RESOLVED}))
+  .catch(error => this.setState({ error }))
+}
+    
 }
 
   formSubmitHendler =data=> {
@@ -44,9 +39,9 @@ export class App extends Component {
   }
 render () {
   return (
-    <div>
+    <div >
     <Searchbar onSubmit={this.formSubmitHendler} />
-    <ImageGallary images={this.state.formValue}  />
+    <ImageGallary images={this.state.image}  />
     
     </div>
   );

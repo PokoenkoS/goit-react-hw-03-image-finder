@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+
 import  "./styles.css"
 
 
@@ -28,13 +29,13 @@ handleSubmit = e => {
     render(){
         return (
 <header className="Searchbar">
-  <form onSubmit={this.handleSubmit} className="Form">
-    <button type="submit" className="Button">
-      <span className="button-label">Search</span>
+  <form onSubmit={this.handleSubmit} className="SearchForm">
+    <button type="submit" className="SearchForm-button">
+      <span className="SearchForm-button-label ">Search</span>
     </button>
 
     <input
-      className="input"
+      className="SearchForm-input "
       type="text"
       autoComplete="off"
       autoFocus

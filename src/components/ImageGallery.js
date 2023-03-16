@@ -3,8 +3,9 @@ import ImageGallaryItem from "./ImageGalleryItem";
 import  "./styles.css"
 
 const ImageGallary = ({images})=>{
+ 
     return(
-        <ul className="Gallery">
+        <ul className="ImageGallery">
   <ImageGallaryItem value={images}/>
 </ul>
     )

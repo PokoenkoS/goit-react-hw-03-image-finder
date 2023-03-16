@@ -1,12 +1,14 @@
 import React from "react";
 import  "./styles.css"
 
-   const ImageGallaryItem =(images) =>  {
-         
+   const ImageGallaryItem =({value}) =>  {
+       
     return( <div>
-                <li className="Gallery-item" >
-                <img src={images.webformatURL} alt="" />
+        {value.map((item)=> {return(
+            <li className="ImageGalleryItem" key={item.id} >
+                <img src={item.webformatURL} alt="" className="ImageGalleryItem-image"/>
               </li>
+        )})}                
             
                  </div>)
           
