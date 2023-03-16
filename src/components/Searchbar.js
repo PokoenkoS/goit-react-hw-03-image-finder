@@ -6,7 +6,8 @@ import  "./styles.css"
 
 class Searchbar extends Component{
     state = {
-     value: ""
+     value: "",
+    
     }
 handleChange = e => {
    
@@ -15,6 +16,9 @@ handleChange = e => {
 
 handleSubmit = e => {
     e.preventDefault();
+    if(this.state.value.trim() ===""){
+        return alert('Введите название картинки')
+    }
     this.props.onSubmit(this.state);
     this.setState({value: ""})
     console.log(this.state.value);
