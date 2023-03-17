@@ -3,8 +3,8 @@ import Searchbar from './Searchbar';
 import ImageGallary from './ImageGallery';
 import imagesApi from './ImageApi'
 import Button from "./Button";
-import  Audio  from "./Loader";
-// import Modal from "./Modal";
+import Loader  from "./Loader";
+
 
 const Status = {
   
@@ -20,7 +20,7 @@ export class App extends Component {
     image: [],
     error: null,
     status: Status.IDLE,
-    page:1,
+    page: 1,
    
     
   }
@@ -43,17 +43,24 @@ if(prevState.formValue!==formValue || prevState.page!== page){
     }))
   }
 
+  onLoadMore = ()=> {
+    console.log('hello');
+    this.setState(({ page }) => {
+      return { page: (page += 1) };
+    });
+  }
+
 
 render () {
   return (
     <div >
     <Searchbar onSubmit={this.formSubmitHendler} />
     {this.state.status === 'pending'&&
-      (<Audio/>)
+      (<Loader/>)
     }
     <ImageGallary images={this.state.image} onImg={this.imageHendler} />
     {this.state.image.length > 0 &&
-      (<Button/>)
+      (<Button onClick = {this.onLoadMore}/>)
     }
    
    

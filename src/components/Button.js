@@ -4,7 +4,7 @@ import  "./styles.css"
 const Button =()=>{
     return(
         <>
-        <button type="button" className="Button"> Load more </button>
+        <button type="button" className="Button" > Load more </button>
         </>
     )
 }
