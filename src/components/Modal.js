@@ -13,7 +13,9 @@ componentDidMount() {
     window.addEventListener('keydown',this.onKeydownHandler)
 }
 
-
+componentWillUnmount(){
+  window.removeEventListener('keydown',this.onKeydownHandler)
+}
 onKeydownHandler = e => {
     if (e.code === 'Escape') {
       this.props.onClose();

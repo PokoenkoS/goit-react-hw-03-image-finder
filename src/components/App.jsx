@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Searchbar from './Searchbar';
 import ImageGallary from './ImageGallery';
 import imagesApi from './ImageApi'
-import Button from "./Button";
 import Loader  from "./Loader";
 
 
@@ -31,7 +30,7 @@ if(prevState.formValue!==formValue || prevState.page!== page){
   this.setState({ status: Status.PENDING });
   imagesApi
   .fetchImages(formValue,page)
-  .then(r=>this.setState({image:r.hits, status: Status.RESOLVED}))
+  .then(r=>this.setState({image:[...prevState.image,...r.hits], status: Status.RESOLVED}))
   .catch(error => this.setState({ error, status: Status.REJECTED  }))
 }
     
@@ -53,14 +52,14 @@ if(prevState.formValue!==formValue || prevState.page!== page){
 
 render () {
   return (
-    <div >
+    <div className="App" >
     <Searchbar onSubmit={this.formSubmitHendler} />
     {this.state.status === 'pending'&&
       (<Loader/>)
     }
     <ImageGallary images={this.state.image} onImg={this.imageHendler} />
     {this.state.image.length > 0 &&
-      (<Button onClick = {this.onLoadMore}/>)
+      (<button onClick = {this.onLoadMore} className="Button">Load more</button>)
     }
    
    
