@@ -1,16 +1,33 @@
-import React from "react";
-import  "./styles.css"
+import React, { Component } from "react";
+import  "./styles.css";
+import Modal from "./Modal";
 
-   const ImageGallaryItem =({value}) =>  {
-       
-    return( <div>
-        {value.map((item)=> {return(
-             <li className="ImageGalleryItem" key={item.id} ><a href={item.largeImageURL}>
-                <img src={item.webformatURL} alt="" className="ImageGalleryItem-image"/></a>
-              </li>
-        )})}                
+   class ImageGallaryItem extends Component  {
+
+      state={
+         isSelect:'',
+      }
+
+onToggle=()=>{
+   this.setState(({ isSelect }) => ({ isSelect: !isSelect }));
+}
+      render() {
+         const { isSelect } = this.state;
+         const {item}=this.props
+         return( <>
             
-                 </div>)
+   <li className="ImageGalleryItem" key={item.id} >
+      <img src={item.webformatURL} 
+      alt={item.tags}
+       className="ImageGalleryItem-image"
+       onClick={this.onToggle}/>
+   </li>
+   {isSelect && <Modal onClose={this.onToggle} item={item}/>}
+     </>
+    )
+      }
+       
+   
           
         }
   

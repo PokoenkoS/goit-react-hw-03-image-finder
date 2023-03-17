@@ -6,9 +6,12 @@ const ImageGallary = ({images})=>{
  
     return(
         <ul className="ImageGallery">
-  <ImageGallaryItem value={images}/>
+            {images.map(item => <ImageGallaryItem key = {item.id} item={item}/>)}
+  
+ 
 </ul>
     )
+    
 }
 
 export default ImageGallary;

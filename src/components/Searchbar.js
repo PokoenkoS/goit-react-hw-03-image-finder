@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import {FaUnlock} from 'react-icons/fa';
+import { FaBeer } from "@react-icons/all-files/fa/FaBeer";
 import  "./styles.css"
 
 
@@ -31,7 +31,7 @@ handleSubmit = e => {
 <header className="Searchbar">
   <form onSubmit={this.handleSubmit} className="SearchForm">
     <button type="submit" className="SearchForm-button">
-      <span className="SearchForm-button-label "><FaUnlock/>Search</span>
+      <span className="SearchForm-button-label ">< FaBeer/>Search</span>
     </button>
 
     <input
