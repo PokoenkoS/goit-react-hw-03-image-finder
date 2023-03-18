@@ -39,14 +39,21 @@ if(prevState.formValue!==formValue || prevState.page!== page){
   formSubmitHendler =data=> {
     this.setState( ({
       formValue: data.value,
+      page:1,
+      image:[],
+      error: null,
+      status: Status.IDLE,
     }))
+
   }
 
   onLoadMore = ()=> {
-    console.log('hello');
-    this.setState(({ page }) => {
+   
+   this.setState(({ page }) => {
       return { page: (page += 1) };
     });
+
+  
   }
 
 
