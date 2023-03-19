@@ -30,22 +30,27 @@ if(prevState.formValue!==formValue || prevState.page!== page){
   this.setState({ status: Status.PENDING });
   imagesApi
   .fetchImages(formValue,page)
-  .then(r=>this.setState({image:[...prevState.image,...r.hits], status: Status.RESOLVED}))
+  .then(r=>{
+    this.setState(prevState =>({
+      image:[...prevState.image,...r.hits],
+      status: Status.RESOLVED
+    }))})
   .catch(error => this.setState({ error, status: Status.REJECTED  }))
+  
 }
-    
-}
+  }
 
   formSubmitHendler =data=> {
-    this.setState( ({
-      formValue: data.value,
-      page:1,
-      image:[],
-      error: null,
-      status: Status.IDLE,
-    }))
-
-  }
+   
+      this.setState ({
+        formValue: data.value,
+        page:1,
+        image:[],
+        error: null,
+        status: Status.IDLE,
+        
+      })
+     }
 
   onLoadMore = ()=> {
    
