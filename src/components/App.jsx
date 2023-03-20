@@ -27,8 +27,13 @@ export class App extends Component {
      imagesApi
      .fetchImages(formValue,page)
      .then(r =>{
-        if (image.length>=r.totalHits){
-          return alert('It`s all')
+      console.log(image.length);
+      console.log(r.totalHits);
+        if (image.length===r.totalHits){
+          this.setState(prevState=>({ status: Status.IDLE }))
+          return alert('It`s all');
+         
+          
     }
     this.setState(prevState =>({
       image:[...prevState.image,...r.hits],
@@ -66,7 +71,7 @@ render () {
       (<Loader/>)
     }
     <ImageGallary images={image} onImg={imageHendler} />
-    {image.length > 0 &&
+    {image.length > 0 && status === 'resolved' && 
       (<button onClick = {onLoadMore} className="Button">Load more</button>
       )
     }
