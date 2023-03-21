@@ -41,9 +41,9 @@ export class App extends Component {
 
   })
   .catch(error => this.setState({ error, status: Status.REJECTED  }))
-  console.log(image);
-  console.log(image.length);
+  
 }
+
   }
 
   formSubmitHendler =data=> {
