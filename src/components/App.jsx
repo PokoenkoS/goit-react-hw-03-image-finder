@@ -27,20 +27,22 @@ export class App extends Component {
      imagesApi
      .fetchImages(formValue,page)
      .then(r =>{
-      console.log(image.length);
-      console.log(r.totalHits);
-        if (image.length===r.totalHits){
-          this.setState(prevState=>({ status: Status.IDLE }))
-          return alert('It`s all');
-         
-          
-    }
+    
     this.setState(prevState =>({
       image:[...prevState.image,...r.hits],
       status: Status.RESOLVED
-    }))})
-  .catch(error => this.setState({ error, status: Status.REJECTED  }))
+    }))
   
+    if (page * 12>=r.totalHits){
+      this.setState(prevState=>({ status: Status.IDLE }))
+      return alert('It`s all');
+     
+       }
+
+  })
+  .catch(error => this.setState({ error, status: Status.REJECTED  }))
+  console.log(image);
+  console.log(image.length);
 }
   }
 
