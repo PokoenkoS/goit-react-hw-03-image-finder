@@ -65,14 +65,14 @@ export class App extends Component {
 
 render () {
   const {status, image,} = this.state;
-  const {formSubmitHendler, imageHendler, onLoadMore} = this;
+  const {formSubmitHendler, onLoadMore} = this;
   return (
     <div className="App" >
     <Searchbar onSubmit={formSubmitHendler} />
     {status === 'pending'&&
       (<Loader/>)
     }
-    <ImageGallary images={image} onImg={imageHendler} />
+    <ImageGallary images={image}  />
     {image.length > 0 && status === 'resolved' && 
       (<button onClick = {onLoadMore} className="Button">Load more</button>
       )
